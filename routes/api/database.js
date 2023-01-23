@@ -4,7 +4,7 @@ const fsPromises = require('fs').promises;
 const path = require('path');
 const router = express.Router();
 
-const databasePath = path.join(__dirname, '../../data/data.json');
+const databasePath = path.join(__dirname, '../../model/data.json');
 const RetriveDataFromDatabase = require('../../controllers/ApiRoutes/GetDataRoute');
 const PostDataRoute = require('../../controllers/ApiRoutes/PostDataRoute');
 const PutDataRoute = require('../../controllers/ApiRoutes/PutDataRoute');
@@ -23,9 +23,7 @@ router.route('/database/:id').get((req, res) => {
   fs.readFile(databasePath, 'utf-8', (err, data) => {
     const jsonFile = JSON.parse(data);
     console.log('jsonFile: ', jsonFile);
-    const findUser = jsonFile.find(
-      (user) => user.id === parseInt(req.params.id)
-    );
+    const findUser = jsonFile.find((user) => user.id == req.params.id);
     console.log('findUser: ', findUser);
     res.send(findUser);
   });

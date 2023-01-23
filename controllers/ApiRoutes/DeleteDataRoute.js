@@ -1,7 +1,7 @@
 const fsPromises = require('fs').promises;
 const path = require('path');
 
-const databasePath = path.join(__dirname, '../../data/data.json');
+const databasePath = path.join(__dirname, '../../model/data.json');
 
 async function DeleteDataRoute(req, res) {
   let body = req.body;

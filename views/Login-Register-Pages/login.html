@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: grid;
+        height: 100vh;
+        place-items: center;
+        background-color: rebeccapurple;
+      }
+      #form {
+        padding: 5rem;
+        height: auto;
+        background-color: royalblue;
+        border-radius: 15px;
+        color: white;
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      label {
+        text-align: left;
+
+        font-size: 20px;
+        width: 200px;
+      }
+
+      input {
+        padding-left: 8px;
+        width: 200px;
+        height: 25px;
+      }
+
+      button {
+        padding: 0.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form">
+      <h1>LOGIN</h1>
+      <label>Username</label>
+      <input type="text" name="username" required />
+      <label>Password</label>
+      <input type="password" name="password" required />
+      <button>LOGIN</button>
+    </form>
+  </body>
+  <script>
+    let form = document.getElementById('form');
+    let formData = new FormData();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formData.append('username', form.username.value);
+      formData.append('password', form.password.value);
+      console.log('Form Data: ', Array.from(formData));
+      console.log('Submit');
+      console.log('form.username.value', form.username.value);
+      console.log('form.password.value', form.password.value);
+    });
+  </script>
+</html>

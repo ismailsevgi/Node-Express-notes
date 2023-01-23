@@ -20,7 +20,12 @@ const errorHandler = require('./ErrorHandler/handleError');
 //Routes
 const subdirIndexRoute = require('./routes/subdir/index');
 const root = require('./routes/root/root');
-const api = require('./routes/api/database');
+const database = require('./routes/api/database');
+const userDatabase = require('./routes/api/userDatabase');
+
+//login regist routes
+const loginRoute = require('./routes/Login-Register/loginRoute');
+const registerRoute = require('./routes/Login-Register/registerRoute');
 
 // build-in middleware to handle urlencoded data
 // in other words, form data:
@@ -45,7 +50,14 @@ app.use('/root', express.static(path.join(__dirname, '/public')));
 app.use('/root', loggerMiddleware);
 
 //Chaining
-app.use([root, subdirIndexRoute, api]);
+app.use([
+  root,
+  subdirIndexRoute,
+  database,
+  loginRoute,
+  registerRoute,
+  userDatabase,
+]);
 
 app.use(errorHandler);
 

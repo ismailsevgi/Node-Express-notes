@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const databasePath = path.join(__dirname, '../../data/data.json');
+const databasePath = path.join(__dirname, '../../model/data.json');
 function PostDataRoute(req, res) {
   let body = req.body;
 
@@ -20,7 +20,7 @@ function PostDataRoute(req, res) {
         if (err) {
           res.status(500).send('Error while writing back', err);
         } else {
-          res.send('Data updated!');
+          res.status(201).send('Data updated!');
         }
       });
     }
